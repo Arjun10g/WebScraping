@@ -99,7 +99,7 @@ body{
     }
 }
 
-.str-theory, .regex, .scrape{
+.str-theory, .regex, .scrape, .text-analysis{
     color: floralwhite;
     background: rgba(245, 245, 245, 0.164);
     padding: 20px;
