@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="index.js" defer></script>
+</head>
+<body>
+    <div class="head">
+        <div class="title">
+            <p class="title-text">Data Scraping and Text Analysis</p>
+        </div>
+        <div class="logo">
+            <img src="https://us.123rf.com/450wm/adnanjaya/adnanjaya1905/adnanjaya190500166/adnanjaya190500166.jpg?ver=6" alt="">
+        </div>
+    </div>
+
+    <div class="navigation">
+        <div class="nav1 nav"><h2>String Theory</h2></div>
+        <div class="nav2 nav"><h2>Regular Expressions</h2></div>
+        <div class="nav3 nav"><h2>Web Scraping</h2></div>
+        <div class="nav4 nav"><h2>Sentiment Analysis</h2></div>
+        <div class="nav5 nav"><h2>Word Cloud/Text Analysis</h2></div>
+    </div>
+
+    <div class="str-theory">
+        <h2 class = 'nav-title'>Data Structures in R</h2>
+        <ul>
+            <li>Character Variables/ Strings - A Character Variable or a string refers to a scalar value of a unicode character. For example, every letter is a character.</li>
+            <pre class="code">str('C')</pre>
+            <li>Factors - Although not exactly precise, one can think of factors as integers with labels. So, the underlying representation of a variable for sex is 1:2 with labels <q>Male</q> and <q>Female</q>. They are a special class with attributes, or metadata, that contains the information about the levels. While the underlying representation is numeric, it is important to remember that factors are categorical. They can't be used as numbers would be, as the following demonstrates. They are best used to represent repeating observations such as gender.</li>
+            <pre class="code">factor('c', levels = 'c', labels = 'Cat')</pre>
+            <li>Numeric Variables - Simplest one by far, any number can be used to represent numeric variables. These can be integers or whole numbers.</li>
+            <pre class="code">2</pre>
+            <li>Logical - Logical Vectors refer to True or False. There are certain Logical operators in R, that output a logical scalar.</li>
+            <pre class="code">T</pre>
+            <li>Vectors - Vectors are a combination of different scalar values. They are required to be homogenous.</li>
+            <pre class="code">c(2,3,4,5,6)</pre>
+            <li>Matrices - Matrices are extremely useful to represent data in a certain format, they are similar to dataframes, howoever they require that the data be homogenous.</li>
+            <pre class="code">matrix(1:6, nrow = 2, ncol = 3)</pre>
+            <li>Data Frames - Data Frames can be used to represent datasets. A dataframe is similar to matrices however, it doesn't require that the data be homogenous. Hence, we can represent different data formats in a single grouping structure.</li>
+            <pre class="code">data.frame(names = c('a', 'b'), scores = c(2,4))</pre>
+            <li>Lists - Lists can be used to combine different types of data such as a vector, matrix and data frame in a single object. </li>
+            <pre class="code">char <- 'c'
+fac <- factor('c', levels = 'c', labels = 'Cat')
+num <- 2
+log <- T
+vec <- c('a','b','c','d')
+mat <- matrix(1:4,2,2,byrow = T)
+dat <- data.frame(names = c('a', 'b'), scores = c(2,4))
+list(char, fac, num,log, vec, mat, dat)
+</pre>
+        </ul>
+        <h2 class = 'nav-title'>Packages</h2>
+        <ul>
+            <li>tidyverse - Data Cleaning</li>
+            <li>stringr - Deals with Regular Expressions and string cleaning</li>
+            <li>rvest - Web Scraping</li>
+            <li>lubridate - Working with Dates</li>
+            <li>Rselenium (optional) - Web Scrapping using a manual server</li>
+            <pre>install.packages(c('tidyverse','stringr','rvest','Rselenium'))</pre>
+        </ul>
+
+        <h2 class = 'nav-title'>Common Must Know Functions</h2>
+        <ul>
+            <li>str_view(stringr) - used to test Regular expressions</li>
+            <li>%>% (Tidyverse) - Piping Operator</li>
+            <li>paste0 or str_c (Base R/stringr) - Used to concatenate strings.</li>
+            <li>read_html (rvest) - read a link</li>
+            <li>html_nodes (rvest) - select nodes</li>
+        </ul>
+        <h2 class = 'nav-title'>Brief introduction to Dates</h2>
+        <p class = "para">
+            The more you learn about dates and times, the more
+complicated they seem to get. To warm up, try these three seemingly
+simple questions- </p>
+        <ul>
+            <li>Does every year have 365 days?</li>
+            <li>Does every day have 24 hours?</li>
+            <li>Does every minute have 60 seconds?</li>
+        </ul>
+        <p class="para">While it's easy to answer these questions, dates are a lot more complex to deal with in R. Some basic code to obtain the current date and time are listed below. <code>today()</code> gives you the current date, and <code>now()</code> gives you the current date and time.
+        Before proceeding any further, you should load the lubridate library. </p>
+        <p class="para">To create dates, we pass a string through one of the following three functions - </p>
+        <ul>
+            <pre class="code">library(lubridate)</pre>
+            <li><code>ymd()</code> - Year, Month, Day</li>
+            <pre class="code">ymd('2019-05-01')</pre>
+            <li><code>dmy()</code> - Day, Month, Year</li>
+            <pre class="code">dmy('01-05-2019')</pre>
+            <li><code>mdy()</code> - Month, Day, Year</li>
+            <pre class="code">mdy('05-01-2019')
+mdy(January 5th, 2012)</pre>
+        </ul>
+        <p class="para">To further add the time component, we pass similar functions - </p>
+        <pre class="code"> ymd_hms("2017-01-31 20:11:59")</pre>
+        <p class="para">The main advantage of arranging in a date format compared to a character is sequence plotting or sequentially arranging the data which is extremely important.</p>
+        <div class="icon">
+        <i class="fa fa-window-close"></i>
+        </div>
+    </div>
+
+    <div class="regex">
+        <h2 class = 'nav-title'>Regular Expressions</h2>
+        <p class="para"> In this section, we will be working with Regular Expressions. Regular Expressions are mainly used for string manipulation and can be used to detect patterns in text. Regex (for short) is commonly used in various programming languages to parse through large amounts of text data to obtain the relevant information. For example, websites may use regex to test whether your password contains the relevant characters. In this part of this document, you'll be exposed to regex in R. Now, as a psychology/non-programming student, you may be wondering how this may be useful to you. But regex can be used in variety of ways. For example, you may use regex to extract certain adjectives from a body of text. Or you may wish to automate positive or negative words while parsing through thousands of reviews or reddit posts. I personally use regex to parse through large number of columns through some key words and restrictions. Additionally, you can use regex to remove unwanted text/whitespace from your strings, detect patterns in text and much more. If that didn't convince you to learn this powerful tool, know that you can use regex in other tools such as microsoft word or google documents to detect patterns of words and replace them in a quick and efficent manner.</p>
+        <h2 class="nav-title">Stringr Tutorial in R</h2>
+        <p class="para">This tutorial will teach you how to use regular expressions in R.</p> 
+        <ul>
+            <li>Load the stringr package either directly or through tidyverse.</li>
+            <pre class="code">library(stringr)
+library(tidyverse)</pre>
+            <li>str_detect() can be used to detect strings based of chosen patterns and results in a logical vector.</li>
+            <pre class="code">str_detect(c("I love R", 'R is great'), "love")</pre>
+            <li>str_extract() can be used to extract letters based off patterns. The resulting output could be a vector or a list.</li>
+            <pre class="code">str_extract(c('i love R', 'R'), 'love')</pre>
+            <li>str_replace() can be used to replace strings based off a pattern.</li>
+            <pre class="code">str_replace(c('i love R', 'R'), 'love', 'like')</pre>
+            <li>str_remove can be used to remove strings based off a pattern.</li>
+            <pre class="code">str_remove('i love R a lot', ' a lot')</pre>
+            <li>str_count() can be used to count the number of times a pattern occurs in a string.</li>
+            <pre class="code">str_count('i love R a lot', 'o')</pre>
+            <li>str_locate() can be used to locate the position of a pattern in a string.</li>
+            <pre class="code">str_locate('i love R a lot', 'o')</pre>
+            <li>str_split() can be used to split a string based off a pattern.</li>
+            <pre class="code">str_split('i love R', ' ')</pre>
+        </ul>
+        <h2 class="nav-title">Regex Tutorial in R</h2>
+        <p class="para">To evaluate regualar expression in R, we'll primarily be utilizing the <code>str_view()</code> function. As it allows you to see what letters are being matched. 
+        I've linked a little helper function that allows you to evaluate the matched strings and practice. There are a variety of special characters in regex that allow you to match certain patterns. In R, you have to double escape most of these special characters, I've listed them below.</p> 
+        <ul>
+            <li>The "." pattern will match any character in R, be it a letter, number, special character. For example, in the first case, "." matches the first letter. In the second case, the "." matches a number and in the final case the "." pattern matches a bracket.</li>
+            <pre class="code">str_view("Hello", pattern = ".")
+str_view("123", pattern = ".")
+str_view("()", pattern = ".")</pre>
+            <li>To directly match certain characters such as ".", ",", ")" etc. You have to escape the characters. In R, we escape characters by using the "\\" before the chosen character. </li>
+            <pre class="code">str_view("Hello!", "\\!")
+str_view("Hello.", "\\.")
+str_view("Hello)", "\\)")</pre>
+            </pre>
+            <li>
+                The "^" pattern matches the beginning of a string. For example, in the first case, the "^" pattern matches the beginning of the string "Hello". In the second case, the "$" pattern matches the end of the string "123".</li>
+            <pre class="code">
+str_view("Hello", pattern = "^")
+str_view("123", pattern = "$")</pre>
+            <li> The "|" pattern matches either of the two patterns. For example, in the first case, the "|" pattern matches either "Hello" or "123". In the second case, the "|" pattern matches either "Hello" or "123" or "Hello123".</li>
+            <pre class="code">
+str_view("Hello123", pattern = "Hello|123")
+str_view("Hello123", pattern = "Hello|123|Hello123")</pre>
+            <li> The "*" pattern matches zero or more of the preceding pattern. For example, in the first case, the "*" pattern matches zero or more of the preceding pattern "a" and the "." matches the next letter "b". In the second case, the "*" pattern matches zero or more of the preceding pattern "a" and the "." matches the next letter "b".</li>
+            <pre class="code">
+'aabc' %>% str_view("a*.")
+'bc' %>% str_view("a*.")</pre>
+            <li> The "+" pattern matches one or more of the preceding pattern. For example, in the first case, the "+" pattern matches one or more of the preceding pattern "a" and the "." matches the next letter "p". In the second case, the "+" pattern matches one or more of the preceding pattern "a", in this case, none exist so the pattern fails to match anything. </li>
+            <pre class="code">
+'aaapple' %>% str_view("a+.")
+'kiwi' %>% str_view("a+.")</pre>
+            <li> The "?" pattern matches zero or one of the preceding pattern. For example, in the first case, the "?" pattern matches zero or one of the preceding pattern "a" and the "." matches the next letter "p". In the second case, the "?" pattern matches zero of the preceding pattern "a" and the "." matches the next letter "p".</li>
+            <pre class="code">
+'apple' %>% str_view("a?.")
+'pple' %>% str_view("a?.")</pre>
+            <li> The "{}" pattern matches a specific number of the preceding pattern. For example, in the first case, the "{}" pattern matches 3 of the preceding pattern "a" and the "." matches the next letter "p". In the second case, the "{}" pattern matches 2 of the preceding pattern "a" and the "." matches the next letter "p".</li>
+            <pre class="code">
+'aaapple' %>% str_view("a{3}.")
+'aaapple' %>% str_view("a{2}.")</pre>
+            <li> The "{}" pattern can also be used to match a range of the preceding pattern. For example, in the first case, the "{}" pattern matches 2 to 3 of the preceding pattern "a" and the "." matches the next letter "p". In the second case, the "{}" pattern matches 1 to 2 of the preceding pattern "a" and the "p" matches the next letter "p".</li>
+            <pre class="code">
+'aaapple' %>% str_view("a{2,3}.")
+'aaapple' %>% str_view("a{1,2}p")</pre>
+            <li> The "[]" pattern matches any of the characters within the brackets. For example, in the first case, the "[]" pattern matches any of the characters "a", "b" or "c" and the "." matches the next letter "p". In the second case, the "[]" pattern matches any of the characters "a" and "p". The final example showcases how you can specify ranges such as [A-Z], [a-z] and [1-9] to select all letters and numbers.</li>
+            <pre class="code">
+'aaapple' %>% str_view("[a].")
+'aaapple' %>% str_view_all("[ap].")
+'ABCabc123' %>% str_view_all("[A-Za-z0-9]")
+</pre>
+            <li> The "()" pattern groups patterns together. For example, in the first case, the "()" pattern groups the "a", "a" and "p" patterns together. In the second case, the "()" pattern groups the "a" and "p" patterns together and the "." matches the next letter "p".</li>
+            <pre class="code">
+'aaapple' %>% str_view("(aap)")
+'aaapple' %>% str_view("(ap.)")</pre>
+            <li> Additionally, there are certain special characters that allow you to match certain patterns in regex. For example, "\\w" will match any word, "\\s" will match any space character, "\\b" will match a boundary, "\\d" will match a number and "[:punct:]" will match all punctuations. Similarly, using an uppercase of any of these special characters works as a negation or a "anything but". For example, "\\W" will match anything except a letter. </li>
+            <pre class="code">
+'apple' %>% str_view("\\w")
+'apple!!' %>% str_view("\\W")
+'Red Apple' %>% str_view("\\s")
+'Red Apple' %>% str_view("\\S")
+'apple' %>% str_view("\\b")
+'apple' %>% str_view("\\B")
+'5 Apples' %>% str_view("\\d")
+'5 Apples' %>% str_view("\\D")
+'apple!!' %>% str_view("[:punct:]")
+</pre>
+        </ul>
+        <h2 class="nav-title">Sample Patterns</h2>
+        <p class="para">String = "My phone number is 555-555-5555 and my friend's number is 444-444-4444"</p> 
+        <pre class="code">
+str_view("My phone number is 555-555-5555 and my friend's number is 444-444-4444", pattern = "\\d{3}-\\d{3}-\\d{4}")
+</pre>
+        <p class="para">This regular expression pattern matches any string of digits (\\d{1,}) separated by dashes (\\-). The curly braces {1,} after each \\d means that there must be at least one digit before or after the dash.
+            The regular expression is looking for sequences of digits separated by dashes. This is a common pattern for phone numbers, which is why the function is able to match the phone numbers in the given string.</p> 
+        <p class="para">String = "My email is example@example.com and my friend's email is friend@gmail.com" <br> Match the emails.</p>
+        <pre class="code">
+str_view_all("My email is example@example.com and my friend's email is friend@gmail.com", pattern = "(\\w*[:punct:]){2}\\w*")
+</pre>
+        <p class="para">The first part of the pattern ((\\w*[:punct:])) matches any word characters (\\w*) followed by any punctuation ([:punct:]) and the curly braces {2} after that mean that there must be two of these combined parts.</p>
+        <p class="para">String = "cat, bat, rat, cart, cat, cut" <br> Match all the words that start with "c" and end with "t".</p>
+        <pre class="code">
+str_view_all("cat, bat, rat, cart, cat, cut", pattern = "c.*t")
+</pre>
+        <p class="para">In this case the c matches the first letter (you can also fix it with an anchor ^) and the .* matches 0 or more of the second letter while the string finishes with the letter "t".</p>
+        <p class="para">Match the letters after the word "the" <br> String "Today is the day I figure out how to solve the problem."</p>
+        <pre class="code">
+str_view_all("Today is the day I figure out how to solve the problem.", pattern = "the\\s\\w*") </pre>
+        <p class="para">While the first solution works, it also matches the letter "the". A more elegent solution would utilize a look back function "(?&lt;=)"</p>
+        <pre class="code">
+str_view_all("Today is the day I figure out how to solve the problem.", pattern = "(?&lt;=the\\s)\\w*") </pre>
+        <p class="para">In this case, the (?&lt;=) pattern allows us to match everything after a certain character which in our case is "the" and a space, hence the inclusion of "\\s".
+             Outside the parantheses is what you want to match. Which in our case is a word.</p>
+             <div class="icon">
+                <i class="fa fa-window-close"></i>
+                </div>
+    </div>
+
+    <div class="scrape">
+        <h2 class="nav-title">Introduction to Web Scraping</h2>
+        <p class="para">This document aims to introduce you to the basics of webscraping Reddit/Twitter data using appropriate software. Additionally, you will be introduced to more "adaptive" webscraping methods that allow you to scrape data off any website either by using automated software that utilizes a server or using prebuilt packages that scrape html text based off selectors.</p>
+        <p class="para">Before we proceed any further, it would behoove you to install the following packages if you haven't done already -</p>
+        <pre class="code">
+install.packages("rvest")
+install.packages("Rselenium") # optional
+install.packages("httr") # optional
+install.packages("jsonlite") # optional
+install.packages("twitteR") # optional
+install.packages("rtweet")
+install.packages("tidytext")
+install.packages("tidyverse")
+devtools::install_github("https://github.com/nathancunn/pushshiftR")</pre>
+        <h2 class="nav-title">What is Web Scraping?</h2>
+        <p class="para">Web scraping is the process of extracting data from websites. This data can be used for a variety of purposes, such as data analysis, data visualization, or data mining. Web scraping is a form of copying, in which specific data is gathered and copied from the web, typically into a central local database or spreadsheet, for later retrieval or analysis.</p>
+        <p class="para">In our case, we'll be utilizing such webscraping tools to extract text/tabular data for additional analysis. </p>
+        <h2 class="nav-title">Rvest</h2>
+        <ul>
+            <li>Install the package by running the following command in your R console: install.packages("rvest")</li>
+            <li>Load the package by running the following command: library(rvest)</li>
+            <li>Use the read_html() function to read in the HTML of a web page</li>
+            <li>Use the html_nodes() function to select specific elements on the page</li>
+            <li>Use the html_table() function to select all tables present in the html</li>
+            <li>Use the html_attr() function to extract the attributes of the selected elements</li>
+            <li>Use the html_text() function to extract the text from the selected elements</li>
+            <li>Use the write.csv() or write.table() function to save the scraped data to a CSV or tab-separated file</li>
+        </ul>
+        <pre class="code">
+ # Load the package 
+library(rvest)
+            
+# Read in the HTML of a web page 
+page <- read_html("https://en.wikipedia.org/wiki/Data_science")
+            
+# Select specific elements on the page 
+headings <- html_nodes(page, "h1, h2, h3, h4, h5, h6")
+            
+# Extract the text from the selected elements 
+heading_text <- html_text(headings)
+              
+# Alternatively you can use the html_table() function to select all tables present in the html
+table <- html_table(page)
+
+# Extract the attributes of the selected elements
+heading_attr <- html_attr(headings, "href")
+
+# You can Also Pipe the entire process for simplicity
+
+heading_text <- page %>% 
+  html_nodes("h1, h2, h3, h4, h5, h6") %>% 
+  html_text()
+
+# Save scraped data to a CSV or tab-separated file 
+write.csv(heading_text, "data.csv") 
+        </pre>
+
+        <h2 class="nav-title">Rselenium (Optional)</h2>
+        <p class = "para"> <b>Note:</b> This package might require the installation of Java on your computer using your console. Here's a helpful <a href = "https://www.youtube.com/watch?v=pxi3iIy4F5A" target = "_blank">Link</a>. </p>
+        <p class="para">Rselenium is a package that allows you to scrape data from websites that require you to login. It is a wrapper for the Selenium Webdriver API. Selenium is a tool that automates web browsers. Selenium is used to automate web applications for testing purposes, but is not limited to just that. Boring web-based administration tasks can (and should) also be automated as well.</p>
+        <pre class="code">
+# Load the package
+library(Rselenium)
+# Start Server
+rs_driver_ob <- rsDriver(browser = 'chrome', chromever = '108.0.5359.22')
+# Start Client
+remDr <- rs_driver_ob[["client"]]
+
+# Go to your webpage
+remDr$navigate("https://www.ratemyprofessors.com/search/teachers?query=*&sid=1495&did=46")
+
+# Close Cookie popup
+remDr$findElement(using = "css", "button.gvGrz")$clickElement()
+# Show More
+remDr$findElement(using = "css", "button.gjQZal")$clickElement()
+html <- remDr$getPageSource()[[1]]
+        </pre>
+        <p class = "para">This code is using the rsDriver and the Rselenium package in R to control a web browser (specifically, Google Chrome version 108.0.5359.22) through a server-client connection. It is then navigating to the search page on "www.ratemyprofessors.com" to search for teachers by query. The code is closing the cookie pop-up and then clicks the 'show more' button to load more professors in the search result. With this code, you can use the same pattern to navigate to different pages and interact with the web page elements using the findElement function and the clickElement function. Finally, it is accesing the html source that allows us to scrape the data using other software such as Rvest.</p>
+    <h2 class="nav-title">httr (Optional)</h2>
+        <p class="para">
+            The httr package in R is a powerful tool for making HTTP requests and working with web APIs. Here's a brief tutorial on how to use it:
+
+            First, you'll need to install the package if you haven't already. You can do this by running the following command in your R console:</p>
+    <pre class = "code"> install.packages("httr")</pre>
+            
+           <p class = "para"> Next, load the package by running the following command:</p>
+    <pre class = "code"> library(httr) </pre>
+            <p class = "para">
+            The most basic function in the package is GET(), which is used to make a GET request to a specified URL.
+            For example, to get the HTML of the Google's homepage, you would use the following command:
+        </p>
+            <pre class = "code">
+response <- GET("https://www.google.com")</pre>
+            <p class = "para">You can also add additional parameters to the request such as headers, query parameters, and the body of the request by using the add_headers(), add_query(), and body() functions respectively.
+            For example, to add a query parameter to the request:</p>
+            <pre class = "code">response <- GET("https://api.example.com/search", add_query("q", "example query"))</pre>
+            
+            <p class = "para">To check the status of the response and access the content, you can use the status_code(), content(), and headers() functions, respectively.
+            For example, to check the status code of the response:</p>
+            <pre class = "code">status_code(response)</pre>
+            <p class = "para">
+            To extract data from the response, you can use content() function and parse it using jsonlite package or xml2 package depending on the format of the response.
+            For example, to parse the response as json:</p>
+            <pre class = "code">
+data <- content(response, as = "json")
+            </pre>
+            <p class = "para">
+            The package also includes functions for other types of requests such as POST(), PUT(), DELETE() etc.
+            And that's it! With httr package you can send different types of requests and work with different types of responses from web APIs in R.
+        </p>
+        <h2 class = "nav-title">Web Scraping with pushshiftR</h2>
+        <p class = "para">The pushshiftR package is a wrapper for the pushshift.io API. It allows you to scrape Reddit data from the pushshift API. Here's a brief tutorial on how to use it:</p>
+        <pre class = "code">
+reddit.temp <- getPushshiftDataRecursive(postType = "submission", 
+                                                     size = 1000, 
+                                                     after = "1584230400", 
+                                                     before = "1589500800",
+                                                     subreddit = "truegaming", 
+                                                     nest_level = 1, 
+                                                     delay = 1) 
+            </pre>
+            <p class = "para">
+              The code is using the `getPushshiftDataRecursive()` function to scrape data from the "truegaming" subreddit on Reddit. 
+              The function is set to scrape "submissions" (posts) with a limit of 1000 posts, that are posted between 15th March to 15th May.
+              The nest_level is set to 1 which means it will only scrape top-level comments.
+              The delay parameter is set to 1 second, this is to avoid the limits of how frequently you can access the API and avoid "bad gateway" error.
+            </p>
+            <p class="para">
+                This code is using the getPushshiftDataRecursive() function from the pushshiftR package, which allows you to scrape data from Reddit using the Pushshift API. The function takes several parameters such as postType, size, after, before, subreddit, nest_level, delay. With this code, you can adjust the parameters and scrape data according to your requirements. 
+              </p>
+                <h2 class = "nav-title">Web Scraping with rtweet</h2>
+                <p class="para">
+                    This tutorial will guide you on how to scrape tweets from Twitter using the R programming language and the 'rtweet' package. Scraping tweets from twitter can be useful for various use cases such as analyzing trending topics, monitoring brand mentions, and more.
+                    </p>
+                    <!-- Load Packages & Setup -->
+                    <pre class="code">
+install.packages("rtweet")
+library(rtweet)
+                    </pre>
+                    <p class="para">
+    To use this code, you will first need a Twitter developer account. You can apply for one at 
+                      <a href="https://developer.twitter.com/en/apply-for-access" target = "_blank">https://developer.twitter.com/en/apply-for-access</a>. Once you have an account, you will need to create an app. Then, copy and paste your API/access information into the following code:
+                    </p>
+                    <pre class="code">
+appname <- "your-app-name"
+consumer_key <- "API key" 
+consumer_secret <- "API secret"
+access_token <- "access token"
+access_secret <- "access secret"
+                    
+twitter_token <- create_token(app = appname, consumer_key = consumer_key, consumer_secret = consumer_secret,
+                                                  access_token = access_token, access_secret = access_secret)
+                    </pre>
+                    <p class="para">
+                      With your API/access information entered, you can now use the `get_timeline()` function to scrape tweets by a specific user. For example, to scrape 1000 tweets from @JustinTrudeau:
+                    </p>
+                    <pre class="code">
+tweets.user <- get_timeline(
+    "@JustinTrudeau", # Twitter user you are interested in
+    n=1000)           # number of tweets you want (max is 3200). Will grab from most recent to oldest.
+                    </pre>
+                    <p class="para">
+                      You can also use the `search_tweets()` function to scrape tweets by a specific search term, such as "#covid". For example
+                    </p>
+                    <pre class="code">
+tweets.posts <- search_tweets(
+                      q="#covid",    # term of interest
+                      n=1000,        # number of tweets you want (max is 18000, see documentation to go beyond) Will grab from most recent to oldest.
+                      include_rts=T, # include retweets, default is true
+                      lang= "en")    # return only English language tweets 
+                    </pre>
+        <!-- Add Icon same as above divs-->
+        <div class="icon">
+            <i class="fa fa-window-close"></i>
+            </div>
+    </div>
+ </body>
+</html>
+
+<!-- hOW TO PUBLISH THE ABOVE CODE TO GITHUB -->
+
+ <!-- Create new repository on github -->
+
+ <!-- nAVIGATE TO MY DIRECTORY IN TERMINAL -->
