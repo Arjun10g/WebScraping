@@ -99,7 +99,7 @@ body{
     }
 }
 
-.str-theory, .regex, .scrape, .text-analysis{
+.str-theory, .regex, .scrape{
     color: floralwhite;
     background: rgba(245, 245, 245, 0.164);
     padding: 20px;
@@ -161,9 +161,5 @@ li:not(:last-child){
 }
 
 .scrape{
-    display: none;
-}
-
-.text-analysis{
     display: none;
 }
