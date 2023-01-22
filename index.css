@@ -163,3 +163,7 @@ li:not(:last-child){
 .scrape{
     display: none;
 }
+
+.text-analysis{
+    display: none;
+}
