@@ -56,6 +56,8 @@ let pageOptions = document.querySelectorAll('.nav');
 let firstOption = document.querySelector('.str-theory');
 let secondOption = document.querySelector('.regex');
 let thirdOption = document.querySelector('.scrape');
+let fourthOption = document.querySelector('.senta');
+let fifthOption = document.querySelector('.texta');
 let closeIcon = document.querySelectorAll('.icon');
 let currentOption = undefined
 
@@ -104,12 +106,15 @@ pageOptions.forEach((test, index) => {
 firstOption.style.height = `${navHeight}px`;
 secondOption.style.height = `${navHeight}px`;
 thirdOption.style.height = `${navHeight}px`;
-
+fourthOption.style.height = `${navHeight}px`;
+fifthOption.style.height = `${navHeight}px`;
 
 pageOptions[0].addEventListener('click', () => {
     firstOption.style.display = "block";
     secondOption.style.display = "none";
     thirdOption.style.display = "none";
+    fourthOption.style.display = "none";
+    fifthOption.style.display = "none";
     currentOption = firstOption;
     gsap.fromTo(currentOption, {x: "100%"}, {x: 0, opacity: 1, duration: 1, delay:2});
 });
@@ -118,6 +123,8 @@ pageOptions[1].addEventListener('click', () => {
     firstOption.style.display = "none";
     secondOption.style.display = "block";
     thirdOption.style.display = "none";
+    fourthOption.style.display = "none";
+    fifthOption.style.display = "none";
     currentOption = secondOption;
     gsap.fromTo(currentOption, {x: "100%"}, {x: 0, opacity: 1, duration: 1, delay:2});
 });
@@ -126,7 +133,29 @@ pageOptions[2].addEventListener('click', () => {
     firstOption.style.display = "none";
     secondOption.style.display = "none";
     thirdOption.style.display = "block";
+    fourthOption.style.display = "none";
+    fifthOption.style.display = "none";
     currentOption = thirdOption;
+    gsap.fromTo(currentOption, {x: "100%"}, {x: 0, opacity: 1, duration: 1, delay:2});
+});
+
+pageOptions[3].addEventListener('click', () => {
+    firstOption.style.display = "none";
+    secondOption.style.display = "none";
+    thirdOption.style.display = "none";
+    fourthOption.style.display = "block";
+    fifthOption.style.display = "none";
+    currentOption = fourthOption;
+    gsap.fromTo(currentOption, {x: "100%"}, {x: 0, opacity: 1, duration: 1, delay:2});
+});
+
+pageOptions[4].addEventListener('click', () => {
+    firstOption.style.display = "none";
+    secondOption.style.display = "none";
+    thirdOption.style.display = "none";
+    fourthOption.style.display = "none";
+    fifthOption.style.display = "block";
+    currentOption = fifthOption;
     gsap.fromTo(currentOption, {x: "100%"}, {x: 0, opacity: 1, duration: 1, delay:2});
 });
 
